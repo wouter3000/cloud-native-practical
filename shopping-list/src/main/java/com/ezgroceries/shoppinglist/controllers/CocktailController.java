@@ -1,4 +1,4 @@
-package com.ezgroceries.shoppinglist.controller;
+package com.ezgroceries.shoppinglist.controllers;
 
 import com.ezgroceries.shoppinglist.database.CocktailDBClient;
 import com.ezgroceries.shoppinglist.database.CocktailDBResponse;
@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;

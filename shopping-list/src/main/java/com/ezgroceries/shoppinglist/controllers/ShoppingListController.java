@@ -1,4 +1,4 @@
-package com.ezgroceries.shoppinglist.controller;
+package com.ezgroceries.shoppinglist.controllers;
 
 import com.ezgroceries.shoppinglist.model.Cocktail;
 import com.ezgroceries.shoppinglist.model.ShoppingList;

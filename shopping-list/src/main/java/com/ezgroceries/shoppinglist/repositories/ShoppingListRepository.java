@@ -1,0 +1,10 @@
+package com.ezgroceries.shoppinglist.repositories;
+import com.ezgroceries.shoppinglist.entities.ShoppingListEntity;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
+import java.util.UUID;
+
+public interface ShoppingListRepository extends CrudRepository<ShoppingListEntity, UUID> {
+    List<ShoppingListEntity> findAllByIdIn(List<UUID> shoppingListIds);
+}
