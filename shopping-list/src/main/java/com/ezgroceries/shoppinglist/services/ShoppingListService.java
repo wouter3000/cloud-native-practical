@@ -14,10 +14,10 @@ public class ShoppingListService {
         this.shoppingListRepository = shoppingListRepository;
     }
 
-    public ShoppingList createShoppingList(ShoppingList shoppingList) {
-        ShoppingListEntity shoppingListEntity = new ShoppingListEntity(shoppingList.getName());
-        ShoppingListEntity saved = shoppingListRepository.save(shoppingListEntity);
-        return ShoppingListEntity(saved);
-    }
+    //public ShoppingList createShoppingList(ShoppingList shoppingList) {
+        //ShoppingListEntity shoppingListEntity = new ShoppingListEntity(shoppingList.getName());
+        //ShoppingListEntity saved = shoppingListRepository.save(shoppingListEntity);
+        //return ShoppingListEntity(saved);
+    //}
 
 }
