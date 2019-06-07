@@ -56,16 +56,16 @@ public class CocktailController {
         listResponse = response.getDrinks().stream().map(
                 dbresponse -> new Cocktail(
                         UUID.randomUUID(),
-                        dbresponse.getStrDrink(),
-                        dbresponse.getStrGlass(),
-                        dbresponse.getStrInstructions(),
-                        dbresponse.getStrDrinkThumb(),
+                        dbresponse.getDrink(),
+                        dbresponse.getGlass(),
+                        dbresponse.getInstructions(),
+                        dbresponse.getDrinkThumb(),
                         Stream.of(
-                                dbresponse.getStrIngredient1(),
-                                dbresponse.getStrIngredient2(),
-                                dbresponse.getStrIngredient3(),
-                                dbresponse.getStrIngredient4(),
-                                dbresponse.getStrIngredient5()
+                                dbresponse.getIngredient1(),
+                                dbresponse.getIngredient2(),
+                                dbresponse.getIngredient3(),
+                                dbresponse.getIngredient4(),
+                                dbresponse.getIngredient5()
                         ).filter(StringUtils::isNotBlank).collect(Collectors.toList())
                 )
         ).collect(Collectors.toList());
