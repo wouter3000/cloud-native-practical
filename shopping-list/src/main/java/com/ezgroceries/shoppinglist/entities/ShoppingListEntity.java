@@ -1,7 +1,8 @@
 package com.ezgroceries.shoppinglist.entities;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -16,7 +17,7 @@ public class ShoppingListEntity {
     @JoinTable(name = "cocktail_shopping_list",
             joinColumns = @JoinColumn(name = "shopping_list_id"),
             inverseJoinColumns = @JoinColumn(name = "cocktail_id"))
-    private Set<CocktailEntity> cocktails;
+    private List<CocktailEntity> cocktails;
 
     public ShoppingListEntity() {
 
@@ -35,11 +36,11 @@ public class ShoppingListEntity {
         return name;
     }
 
-    public Set<CocktailEntity> getCocktails() {
-        return cocktails;
+    public void setCocktails(List<CocktailEntity> cocktails) {
+        this.cocktails = cocktails;
     }
 
-    public void setCocktails(Set<CocktailEntity> cocktails) {
-        this.cocktails.addAll(cocktails);
+    public List<CocktailEntity> getCocktails() {
+        return cocktails;
     }
 }

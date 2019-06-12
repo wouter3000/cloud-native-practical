@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface CocktailRepository extends CrudRepository<CocktailEntity, UUID> {
     List<CocktailEntity> findByIdDrinkIn(List<String> idDrinks);
-    List<CocktailEntity> findAllByIdIn(List<UUID> cocktailIds);
+    List<CocktailEntity> findAllById(List<UUID> cocktailIds);
 }

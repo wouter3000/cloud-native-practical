@@ -25,7 +25,7 @@ public class ShoppingListController {
     public List<Cocktail> addCocktailsToShoppingList(@PathVariable String shoppingListId, @RequestBody List<Cocktail> cocktails) {
         return cocktails;
     }
-
+    /*
     // Get a Shopping List
     @GetMapping(value = "/{shoppingListId}")
     public ShoppingList getShoppingList(@PathVariable UUID shoppingListId) {
@@ -56,4 +56,5 @@ public class ShoppingListController {
                 )
         );
     }
+    */
 }

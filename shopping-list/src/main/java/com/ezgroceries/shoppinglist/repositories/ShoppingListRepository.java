@@ -6,5 +6,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ShoppingListRepository extends CrudRepository<ShoppingListEntity, UUID> {
-    List<ShoppingListEntity> findAllByIdIn(List<UUID> shoppingListIds);
+    List<ShoppingListEntity> findAll();
 }

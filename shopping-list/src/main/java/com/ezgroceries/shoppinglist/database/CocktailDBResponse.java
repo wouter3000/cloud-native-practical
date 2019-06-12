@@ -1,9 +1,6 @@
 package com.ezgroceries.shoppinglist.database;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class CocktailDBResponse {
     private List<Drink> drinks;
@@ -107,14 +104,14 @@ public class CocktailDBResponse {
             this.Ingredient5 = Ingredient5;
         }
 
-        public Set<String> getIngredients() {
-            Set<String> ingredients = new HashSet<>();
+        /*public List<String> getIngredients() {
+            List<String> ingredients = new HashSet<>();
             ingredients.add(getIngredient1());
             ingredients.add(getIngredient2());
             ingredients.add(getIngredient3());
             ingredients.add(getIngredient4());
             ingredients.add(getIngredient5());
-            return ingredients.stream().filter(i -> !i.isEmpty()).collect(Collectors.toSet());
-        }
+            return ingredients.stream().filter(i -> !i.isEmpty()).collect(Collectors.toList());
+        }*/
     }
 }
