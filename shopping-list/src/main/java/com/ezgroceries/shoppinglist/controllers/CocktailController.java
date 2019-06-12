@@ -3,6 +3,7 @@ package com.ezgroceries.shoppinglist.controllers;
 import com.ezgroceries.shoppinglist.database.CocktailDBClient;
 import com.ezgroceries.shoppinglist.database.CocktailDBResponse;
 import com.ezgroceries.shoppinglist.model.Cocktail;
+import com.ezgroceries.shoppinglist.services.CocktailService;
 import io.micrometer.core.instrument.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,16 @@ import java.util.stream.Stream;
 @RequestMapping(value = "/cocktails", produces = "application/json")
 public class CocktailController {
 
+    private final CocktailService cocktailService;
+
+    private CocktailController(CocktailService cocktailService) { this.cocktailService = cocktailService; }
+
+    @GetMapping
+    public List<Cocktail> get(@RequestParam String search) {
+
+        return cocktailService.searchCocktails(search);
+    }
+    /*
     private final CocktailDBClient cocktailDBClient;
 
     public CocktailController(CocktailDBClient cocktailDBClient) {
@@ -29,12 +40,12 @@ public class CocktailController {
         return  generateList(cocktailDBClient.searchCocktails(search));
     }
 
-    //@GetMapping
-    //public List<Cocktail> get(@RequestParam String search) {
-    //return new ArrayList<>(getDummyResources());
-    //}
+    @GetMapping
+    public List<Cocktail> get(@RequestParam String search) {
+        return new ArrayList<>(getDummyResources());
+    }
 
-    /*private List<Cocktail> getDummyResources() {
+    private List<Cocktail> getDummyResources() {
         return Arrays.asList(
                 new Cocktail(
                         UUID.fromString("23b3d85a-3928-41c0-a533-6538a71e17c4"), "Margerita",
@@ -48,7 +59,7 @@ public class CocktailController {
                         "Rub rim of cocktail glass with lime juice. Dip rim in coarse salt..",
                         "https://www.thecocktaildb.com/images/media/drink/qtvvyq1439905913.jpg",
                         Arrays.asList("Tequila", "Blue Curacao", "Lime juice", "Salt")));
-    }*/
+    }
     private List<Cocktail> generateList(CocktailDBResponse response){
         List<Cocktail> listResponse;
 
@@ -71,4 +82,5 @@ public class CocktailController {
         ).collect(Collectors.toList());
         return listResponse;
     }
+    */
 }
