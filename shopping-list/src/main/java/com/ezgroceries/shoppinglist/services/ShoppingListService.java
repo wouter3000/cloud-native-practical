@@ -20,11 +20,17 @@ public class ShoppingListService {
         this.cocktailService = cocktailService;
     }
 
-    public ShoppingList createShoppingList(String name) {
-        ShoppingListEntity shoppingListEntity = new ShoppingListEntity(name);
-        ShoppingListEntity saved = shoppingListRepository.save(shoppingListEntity);
-        return fromShoppingListEntity(saved);
+    public ShoppingList createShoppingList(ShoppingList shoppingList) {
+        ShoppingListEntity shoppingListEntity = shoppingListRepository.save(new ShoppingListEntity(shoppingList.getName()));
+        return transformShoppingList(shoppingListEntity);
     }
+
+    //public ShoppingList createShoppingList(String name) {
+    //    ShoppingListEntity shoppingListEntity = new ShoppingListEntity(name);
+    //    ShoppingListEntity saved = shoppingListRepository.save(shoppingListEntity);
+    //    return fromShoppingListEntity(saved);
+    //}
+
 
     public ShoppingList get(String shoppingListId) {
         Optional<ShoppingListEntity> shoppingList = shoppingListRepository.findById(UUID.fromString(shoppingListId));
@@ -56,6 +62,18 @@ public class ShoppingListService {
         List<String> ids = entities.stream().map(CocktailEntity::getId).map(UUID::toString).collect(Collectors.toList());
         List<String> ingredients = cocktailService.getAllById(ids).stream().map(CocktailEntity::getIngredients).flatMap(Set::stream).distinct().collect(Collectors.toList());
         shoppingList.setIngredients(ingredients);
+        return shoppingList;
+    }
+
+    private ShoppingList transformShoppingList(ShoppingListEntity shoppingListEntity) {
+        List<String> ingredients = shoppingListEntity.getCocktails().stream()
+                .map(CocktailEntity::getIngredients)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
+
+        ShoppingList shoppingList = new ShoppingList(shoppingListEntity.getId(), shoppingListEntity.getName());
+        shoppingList.setIngredients(ingredients);
+
         return shoppingList;
     }
 

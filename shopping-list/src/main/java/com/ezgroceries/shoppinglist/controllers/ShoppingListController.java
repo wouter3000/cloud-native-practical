@@ -21,23 +21,27 @@ public class ShoppingListController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ShoppingList createShoppingList(@RequestBody Map<String, String> body) {
-        ShoppingList shoppingList = shoppingListService.createShoppingList(body.get("name"));
-        return shoppingList;
+    public ShoppingList createShoppingList(@RequestBody ShoppingList shoppingList) {
+        return shoppingListService.createShoppingList(shoppingList);
     }
-
-    @PostMapping(value = "/{accountId}/cocktails")
+    //@PostMapping
+    //@ResponseStatus(HttpStatus.CREATED)
+    //public ShoppingList createShoppingList(@RequestBody Map<String, String> body) {
+        //ShoppingList shoppingList = shoppingListService.createShoppingList(body.get("name"));
+        //return shoppingList;
+    //}
+    @PostMapping(value = "/{shoppingListId}/cocktails")
     @ResponseStatus(HttpStatus.OK)
-    public List<Map<String, String>> addCocktails(@PathVariable String accountId, @RequestBody List<Map<String, String>> body) {
+    public List<Map<String, String>> addCocktails(@PathVariable String shoppingListId, @RequestBody List<Map<String, String>> body) {
         List<String> cocktails = body.stream().map(map -> map.get("cocktailId")).collect(Collectors.toList());
-        shoppingListService.addCocktails(accountId, cocktails);
+        shoppingListService.addCocktails(shoppingListId, cocktails);
         return body.subList(0, 1);
     }
 
-    @GetMapping(value = "/{accountId}")
+    @GetMapping(value = "/{shoppingListId}")
     @ResponseStatus(HttpStatus.OK)
-    public ShoppingList getShoppingList(@PathVariable String accountId) {
-        return shoppingListService.get(accountId);
+    public ShoppingList getShoppingList(@PathVariable String shoppingListId) {
+        return shoppingListService.get(shoppingListId);
     }
 
     @GetMapping
