@@ -1,6 +1,8 @@
 package com.ezgroceries.shoppinglist.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 public class ShoppingList {
@@ -8,10 +10,10 @@ public class ShoppingList {
     private String name;
     private List<String> ingredients;
 
-    public ShoppingList(UUID shoppingListId, String name, List<String> ingredients) {
+    public ShoppingList(UUID shoppingListId, String name) {
         this.shoppingListId = shoppingListId;
         this.name = name;
-        this.ingredients = ingredients;
+        this.ingredients = new ArrayList<>();
     }
     public UUID getShoppingListID() {
         return shoppingListId;
@@ -27,6 +29,10 @@ public class ShoppingList {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setIngredients(List<String> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public List<String> getIngredients() {
