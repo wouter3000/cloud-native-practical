@@ -3,27 +3,26 @@ package com.ezgroceries.shoppinglist.database;
 import java.util.List;
 
 public class CocktailDBResponse {
-    private List<DrinkResource> drinks;
+    private List<Drink> drinks;
 
-    public List<DrinkResource> getDrinks() {
+    public List<Drink> getDrinks() {
         return drinks;
     }
 
-    public void setDrinks(List<DrinkResource> drinks) {
+    public void setDrinks(List<Drink> drinks) {
         this.drinks = drinks;
     }
-
-    public static class DrinkResource {
+    public static class Drink {
         private String idDrink;
-        private String strDrink;
-        private String strGlass;
-        private String strInstructions;
-        private String strDrinkThumb;
-        private String strIngredient1;
-        private String strIngredient2;
-        private String strIngredient3;
-        private String strIngredient4;
-        private String strIngredient5;
+        private String Drink;
+        private String Glass;
+        private String Instructions;
+        private String DrinkThumb;
+        private String Ingredient1;
+        private String Ingredient2;
+        private String Ingredient3;
+        private String Ingredient4;
+        private String Ingredient5;
 
         public String getIdDrink() {
             return idDrink;
@@ -33,76 +32,86 @@ public class CocktailDBResponse {
             this.idDrink = idDrink;
         }
 
-        public String getStrDrink() {
-            return strDrink;
+        public String getDrink() {
+            return Drink;
         }
 
-        public void setStrDrink(String strDrink) {
-            this.strDrink = strDrink;
+        public void setDrink(String Drink) {
+            this.Drink = Drink;
         }
 
-        public String getStrGlass() {
-            return strGlass;
+        public String getGlass() {
+            return Glass;
         }
 
-        public void setStrGlass(String strGlass) {
-            this.strGlass = strGlass;
+        public void setGlass(String Glass) {
+            this.Glass = Glass;
         }
 
-        public String getStrInstructions() {
-            return strInstructions;
+        public String getInstructions() {
+            return Instructions;
         }
 
-        public void setStrInstructions(String strInstructions) {
-            this.strInstructions = strInstructions;
+        public void setInstructions(String Instructions) {
+            this.Instructions = Instructions;
         }
 
-        public String getStrDrinkThumb() {
-            return strDrinkThumb;
+        public String getDrinkThumb() {
+            return DrinkThumb;
         }
 
-        public void setStrDrinkThumb(String strDrinkThumb) {
-            this.strDrinkThumb = strDrinkThumb;
+        public void setDrinkThumb(String DrinkThumb) {
+            this.DrinkThumb = DrinkThumb;
         }
 
-        public String getStrIngredient1() {
-            return strIngredient1;
+        public String getIngredient1() {
+            return Ingredient1;
         }
 
-        public void setStrIngredient1(String strIngredient1) {
-            this.strIngredient1 = strIngredient1;
+        public void setIngredient1(String Ingredient1) {
+            this.Ingredient1 = Ingredient1;
         }
 
-        public String getStrIngredient2() {
-            return strIngredient2;
+        public String getIngredient2() {
+            return Ingredient2;
         }
 
-        public void setStrIngredient2(String strIngredient2) {
-            this.strIngredient2 = strIngredient2;
+        public void setIngredient2(String Ingredient2) {
+            this.Ingredient2 = Ingredient2;
         }
 
-        public String getStrIngredient3() {
-            return strIngredient3;
+        public String getIngredient3() {
+            return Ingredient3;
         }
 
-        public void setStrIngredient3(String strIngredient3) {
-            this.strIngredient3 = strIngredient3;
+        public void setIngredient3(String Ingredient3) {
+            this.Ingredient3 = Ingredient3;
         }
 
-        public String getStrIngredient4() {
-            return strIngredient4;
+        public String getIngredient4() {
+            return Ingredient4;
         }
 
-        public void setStrIngredient4(String strIngredient4) {
-            this.strIngredient4 = strIngredient4;
+        public void setIngredient4(String Ingredient4) {
+            this.Ingredient4 = Ingredient4;
         }
 
-        public String getStrIngredient5() {
-            return strIngredient5;
+        public String getIngredient5() {
+            return Ingredient5;
         }
 
-        public void setStrIngredient5(String strIngredient5) {
-            this.strIngredient5 = strIngredient5;
+        public void setIngredient5(String Ingredient5) {
+            this.Ingredient5 = Ingredient5;
         }
+
+        /*public List<String> getIngredients() {
+            List<String> ingredients = new HashSet<>();
+            ingredients.add(getIngredient1());
+            ingredients.add(getIngredient2());
+            ingredients.add(getIngredient3());
+            ingredients.add(getIngredient4());
+            ingredients.add(getIngredient5());
+            return ingredients.stream().filter(i -> !i.isEmpty()).collect(Collectors.toList());
+        }*/
     }
 }

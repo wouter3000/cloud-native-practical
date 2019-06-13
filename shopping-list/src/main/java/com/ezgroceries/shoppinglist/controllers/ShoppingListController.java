@@ -1,16 +1,56 @@
-package com.ezgroceries.shoppinglist.controller;
+package com.ezgroceries.shoppinglist.controllers;
 
 import com.ezgroceries.shoppinglist.model.Cocktail;
 import com.ezgroceries.shoppinglist.model.ShoppingList;
+import com.ezgroceries.shoppinglist.services.ShoppingListService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/shopping-lists", produces = "application/json")
 public class ShoppingListController {
 
+    private final ShoppingListService shoppingListService;
+
+    public ShoppingListController(ShoppingListService shoppingListService) {
+        this.shoppingListService = shoppingListService;
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public ShoppingList createShoppingList(@RequestBody ShoppingList shoppingList) {
+        return shoppingListService.createShoppingList(shoppingList);
+    }
+    //@PostMapping
+    //@ResponseStatus(HttpStatus.CREATED)
+    //public ShoppingList createShoppingList(@RequestBody Map<String, String> body) {
+        //ShoppingList shoppingList = shoppingListService.createShoppingList(body.get("name"));
+        //return shoppingList;
+    //}
+    @PostMapping(value = "/{shoppingListId}/cocktails")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Map<String, String>> addCocktails(@PathVariable String shoppingListId, @RequestBody List<Map<String, String>> body) {
+        List<String> cocktails = body.stream().map(map -> map.get("cocktailId")).collect(Collectors.toList());
+        shoppingListService.addCocktails(shoppingListId, cocktails);
+        return body.subList(0, 1);
+    }
+
+    @GetMapping(value = "/{shoppingListId}")
+    @ResponseStatus(HttpStatus.OK)
+    public ShoppingList getShoppingList(@PathVariable String shoppingListId) {
+        return shoppingListService.get(shoppingListId);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<ShoppingList> getAllShoppingLists() {
+        return shoppingListService.getAllShoppingLists();
+    }
+
+    /*
     // Create a new Shopping List
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -55,5 +95,5 @@ public class ShoppingListController {
                         Arrays.asList("Tequila", "Triple Sec", "Lime Juice", "Salt", "Blue Curacao")
                 )
         );
-    }
+    } */
 }
